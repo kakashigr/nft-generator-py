@@ -29,7 +29,7 @@ def generate_unique_images(amount, config):
   for trait in config["layers"]:
     trait_files[trait["name"]] = {}
     for x, key in enumerate(trait["values"]):
-      trait_files[trait["name"]][key] = trait["filename"][x];
+      trait_files[trait["name"]][key] = trait["filename"][x]
   
   all_images = []
   for i in range(amount): 
@@ -100,28 +100,35 @@ def generate_unique_images(amount, config):
         with open('./metadata/' + str(item["tokenId"]) + '.json', 'w') as outfile:
           json.dump(original_json, outfile, indent=4)
 
-generate_unique_images(11, {
+generate_unique_images(112, {
   "layers": [
     {
       "name": "Background",
-      "values": ["Blue", "Orange", "Purple", "Red", "Yellow"],
+      "values": ["Blue", "Cyber", "Cyber 2", "Cyber 3", "Green", "Orange", "Pink"],
       "trait_path": "./trait-layers/backgrounds",
-      "filename": ["blue", "orange", "purple", "red", "yellow"],
-      "weights": [20,20,20,20,20]
+      "filename": ["bg-blue", "bg-cyber", "bg-cyber2", "bg-cyber3-rare", "bg-green", "bg-orange", "bg-pink"],
+      "weights": [20, 20, 9, 9, 2, 20, 20]
     },
     {
-      "name": "Foreground",
-      "values": ["Python Logo", "Python Logo 32"],
-      "trait_path": "./trait-layers/foreground",
-      "filename": ["logo", "logo"],
-      "weights": [50, 50]
+      "name": "Neckless",
+      "values": ["Chain", "Dollar", "Monk", "Skull"],
+      "trait_path": "./trait-layers/Neckless",
+      "filename": ["neck-chain", "neck-dollar", "neck-monk", "neck-skull"],
+      "weights": [30, 30, 10, 30]
     },
     {
-      "name": "Branding",
-      "values": ["A Name", "Another Name"],
-      "trait_path": "./trait-layers/text",
-      "filename": ["text", "text"],
-      "weights": [50, 50]
+      "name": "Base",
+      "values": ["Base Face"],
+      "trait_path": "./trait-layers/Base",
+      "filename": ["base@5x"],
+      "weights": [100]
+    },
+    {
+      "name": "Sunglasses",
+      "values": ["8bit", "Ray", "Seeth", "Sunset"],
+      "trait_path": "./trait-layers/Sunglasses",
+      "filename": ["sun-8bit", "sun-ray", "sun-seeth", "sun-sunset"],
+      "weights": [5, 25, 25, 45]
     }
   ],
   "incompatibilities": [
@@ -132,8 +139,8 @@ generate_unique_images(11, {
     },  #  @dev : Blue backgrounds will never have the attribute "Python Logo 2".
   ],
   "baseURI": ".",
-  "name": "NFT #",
-  "description": "This is a description for this NFT series."
+  "name": "CyberDoodle #",
+  "description": "Meet Cyber Doodle, the labradoodle that made it to the metaverse! Mint our ERC721 NFT and collect one of the 1024 Generated NFTs."
 })
 
 #Additional layer objects can be added following the above formats. They will automatically be composed along with the rest of the layers as long as they are the same size as eachother.
